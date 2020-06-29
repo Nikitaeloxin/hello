@@ -1,27 +1,18 @@
-#include "test.h"
+#include "head.h"
 
 
 int main(int argc, char *argv[])
 {
-    string str1,str2,str3;
-    int a;
-    vector<Person> P;
 
-    cout << " add - add Person to Vec end; " <<endl
-         << "del - delete element from end;" << endl
-         << "list - output all list;" << endl
-         << "end - close" << endl;
-
-    while(str1 != "end"){
-        cin >> str1;
-        if(str1 == "add"){
-            cin >> str2 >> str3 >> a;
-            P.push_back(Person(str2,str3,a));
-        }
-        if(str1 == "list"){
-            for (int i = 0; i < P.size();i++)
-                cout << P[i];
-        }
-    }
-    return 0;
+	//variables
+//--------------------------------------------------------------------------------------------------------------------------------
+	
+	vector<Person> P;           //vector for storage positions
+	string dataSource = "C:\\Users\\дом\\Documents\\Visual Studio 2013\\Projects\\test_fort_vs\\buffer.txt"; //storage for writing and reading data (for persistant)
+//--------------------------------------------------------------------------------------------------------------------------------
+	read_from_storage(dataSource, P);
+	info();
+	exec_prog(P);
+	write_to_storage(dataSource, P);
+	return 0;
 }
