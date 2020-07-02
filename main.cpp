@@ -5,14 +5,41 @@ int main(int argc, char *argv[])
 {
 
 	//variables
-//--------------------------------------------------------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------------------------------------------------------
+	PositionList<Person> p;                              //list of position
+	std::string dataSource = "..//storage//storage.txt"; //storage for writing and reading data (for persistant)
+	string str;                                          // for choose input option
+	int j;												 //for delete
+	Person temp;										 //for add and search
+	//--------------------------------------------------------------------------------------------------------------------------------
 	
-	vector<Person> P;           //vector for storage positions
-	string dataSource = "C:\\Users\\дом\\Documents\\Visual Studio 2013\\Projects\\test_fort_vs\\buffer.txt"; //storage for writing and reading data (for persistant)
-//--------------------------------------------------------------------------------------------------------------------------------
-	read_from_storage(dataSource, P);
 	info();
-	exec_prog(P);
-	write_to_storage(dataSource, P);
+
+	while (str != "end"){
+		cin >> str;
+
+		if (str == "add"){
+			Person temp;
+			cin >> temp;
+			p.push_back(temp);
+			cout << "!--element added--!\n" << endl;
+		}
+
+		if (str == "del"){
+			cin >> j;
+			p.del_element(j);
+			cout << "!--element deleted--!\n" << endl;
+		}
+
+		if (str == "list"){
+			p.list();
+		}
+		if (str == "search"){
+			cin >> temp;
+			p.search(temp);
+
+		}
+	}
+	
 	return 0;
 }
